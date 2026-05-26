@@ -1,0 +1,29 @@
+import java.util.Scanner;
+public class CalculoSeno {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        double limiteInferior = 0;
+        double limiteSuperior = 360;
+        
+        System.out.print("Ingresa un angulo en grados (0-360): ");
+        double grados = sc.nextDouble();
+        
+        if (grados >= limiteInferior && grados <= limiteSuperior) {
+            
+            double radianes = grados * (Math.PI / 180);
+            
+            
+            double resultado = Math.sin(radianes);
+            
+            System.out.println("El angulo es valido.");
+            System.out.printf("El seno aproximado de %.2f es: %.4f\n", grados, resultado);
+            
+        } else {
+            System.out.println("El angulo está fuera de los limites permitidos (" 
+                                + limiteInferior + "° a " + limiteSuperior + "°).");
+        }
+        
+        sc.close();
+    }
+}
