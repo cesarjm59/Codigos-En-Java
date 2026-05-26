@@ -1,0 +1,34 @@
+import java.util.Scanner;
+class CalculoSalarial {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        final int NUM_EMPLEADOS = 50;
+        final double FACTOR_EXTRA = 1.5;
+        final int LIMITE_HORAS_NORMALES = 40;
+
+        double ptas_hora; // Pago por hora ordinaria
+        double horas_trabajadas;
+        double salario;
+
+        System.out.print("Introduzca el pago por hora ordinaria: ");
+        ptas_hora = sc.nextDouble();
+
+        System.out.println("\n--- Registro de Salarios ---");
+
+        for (int contador = 1; contador <= NUM_EMPLEADOS; contador++) {
+            System.out.print("Empleado #" + contador + " - Horas trabajadas: ");
+            horas_trabajadas = sc.nextDouble();
+
+            if (horas_trabajadas > LIMITE_HORAS_NORMALES) {
+                double horasExtras = horas_trabajadas - LIMITE_HORAS_NORMALES;
+                salario = (LIMITE_HORAS_NORMALES * ptas_hora) + (horasExtras * ptas_hora * FACTOR_EXTRA);
+            } else {
+                salario = horas_trabajadas * ptas_hora;
+            }
+            System.out.printf("   > Salario total: %.2f%n", salario);
+            System.out.println("-----------------------------------");
+        }
+        sc.close();
+    }
+}
