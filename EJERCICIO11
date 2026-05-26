@@ -1,0 +1,62 @@
+import java.util.Scanner;
+class EncuestaProductos {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int totalEncuestados = 0;
+        int aceptaA = 0;
+        int aceptaB = 0;
+        int aceptaAmbos = 0;
+        int soloA = 0;
+        int soloB = 0;
+        int ninguno = 0;
+
+        System.out.println("--- Registro de Encuesta (Ingrese -1 para finalizar) ---");
+
+        while (true) {
+            System.out.print("¿Acepta producto A? (1=Sí, 0=No): ");
+            int respuestaA = sc.nextInt();
+            if (respuestaA == -1) break; // Salir del bucle
+
+            System.out.print("¿Acepta producto B? (1=Sí, 0=No): ");
+            int respuestaB = sc.nextInt();
+            if (respuestaB == -1) break;
+
+            totalEncuestados++;
+
+            if (respuestaA == 1) aceptaA++;
+            if (respuestaB == 1) aceptaB++;
+
+            if (respuestaA == 1 && respuestaB == 1) {
+                aceptaAmbos++;
+            } else if (respuestaA == 1 && respuestaB == 0) {
+                soloA++;
+            } else if (respuestaA == 0 && respuestaB == 1) {
+                soloB++;
+            } else {
+                ninguno++;
+            }
+            System.out.println("-----------------------------------");
+        }
+
+        if (totalEncuestados > 0) {
+            System.out.println("\n=== RESULTADOS FINALES ===");
+            System.out.println("Total de encuestados: " + totalEncuestados);
+            
+            imprimirPorcentaje("Aceptan el producto A", aceptaA, totalEncuestados);
+            imprimirPorcentaje("Aceptan el producto B", aceptaB, totalEncuestados);
+            imprimirPorcentaje("Aceptan ambos productos", aceptaAmbos, totalEncuestados);
+            imprimirPorcentaje("Aceptan A pero no B", soloA, totalEncuestados);
+            imprimirPorcentaje("Aceptan B pero no A", soloB, totalEncuestados);
+            imprimirPorcentaje("No aceptan ninguno", ninguno, totalEncuestados);
+        } else {
+            System.out.println("No se registraron datos.");
+        }
+        
+        sc.close();
+    }
+    public static void imprimirPorcentaje(String etiqueta, int cantidad, int total) {
+        double porcentaje = (cantidad * 100.0) / total;
+        System.out.printf("- %s: %.2f%%%n", etiqueta, porcentaje);
+    }
+}
