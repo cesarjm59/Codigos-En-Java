@@ -1,0 +1,29 @@
+import java.util.Scanner;
+class CajeroAutomatico {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Introduce la cantidad de euros a retirar: ");
+        int cantidad = sc.nextInt();
+
+        int b20, b10, b5, b1;
+
+        b20 = cantidad / 20;
+        cantidad = cantidad % 20; 
+
+        b10 = cantidad / 10;
+        cantidad = cantidad % 10;
+
+        b5 = cantidad / 5;
+        cantidad = cantidad % 5;
+
+        b1 = cantidad;
+
+        System.out.println("El desglose óptimo es:");
+        if (b20 > 0) System.out.println(b20 + " billetes de 20€");
+        if (b10 > 0) System.out.println(b10 + " billetes de 10€");
+        if (b5 > 0)  System.out.println(b5 + " billetes de 5€");
+        if (b1 > 0)  System.out.println(b1 + " billetes de 1€");
+        sc.close();
+    }
+}
