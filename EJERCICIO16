@@ -1,0 +1,26 @@
+import java.util.Scanner;
+class NumeroPerfecto {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Introduzca un número natural positivo: ");
+        int numero = sc.nextInt();
+
+        if (numero <= 0) {
+            System.out.println("Por favor, ingrese un número mayor a cero.");
+        } else {
+            int sumaDivisores = 0;
+            for (int i = 1; i <= numero / 2; i++) {
+                if (numero % i == 0) {
+                    sumaDivisores += i;
+                }
+            }
+            if (sumaDivisores == numero) {
+                System.out.println(numero + " es un número perfecto.");
+            } else {
+                System.out.println(numero + " no es un número perfecto.");
+            }
+        }
+        sc.close();
+    }
+}
