@@ -1,0 +1,17 @@
+import java.util.Scanner;
+class NumeroTriangular {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Introduzca el valor de n: ");
+        int n = sc.nextInt();
+
+        if (n <= 0) {
+            System.out.println("Por favor, introduzca un número natural positivo.");
+        } else {
+          int triangularFormula = (n * (n + 1)) / 2;
+            System.out.println("--- Resultados ---");
+            System.out.println("El " + n + "-ésimo número triangular es: " + triangularFormula);
+        }
+        sc.close();
+    }
+}
