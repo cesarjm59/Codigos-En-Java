@@ -1,0 +1,29 @@
+import java.util.Scanner;
+class NPrimerosFibonacci {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Introduzca el número de términos (N): ");
+        int n = sc.nextInt();
+
+        if (n <= 0) {
+            System.out.println("Por favor, introduzca un número natural (mayor a 0).");
+        } else {
+            System.out.println("Los primeros " + n + " términos son:");
+            
+            long f1 = 1;
+            long f2 = 1;
+
+            for (int i = 1; i <= n; i++) {
+                System.out.print(f1 + (i < n ? ", " : ""));
+
+                long siguiente = f1 + f2;
+                
+                f1 = f2;
+                f2 = siguiente;
+            }
+            System.out.println(); // Salto de línea final
+        }
+        sc.close();
+    }
+}
