@@ -1,0 +1,50 @@
+import java.util.Scanner;
+public class FibonacciEntreNyM {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int n, m;
+
+        do {
+            System.out.print("Ingrese el valor de n: ");
+            n = scanner.nextInt();
+            if (n < 0) {
+                System.out.println("No se permiten números negativos. Intente nuevamente.");
+            }
+        } while (n < 0);
+
+        do {
+            System.out.print("Ingrese el valor de m : ");
+            m = scanner.nextInt();
+            if (m < 0) {
+                System.out.println("No se permiten números negativos. Intente nuevamente.");
+            }
+        } while (m < 0);
+
+        if (n > m) {
+            System.out.println("El valor de n debe ser menor o igual al valor de m.");
+            scanner.close();
+            return;
+        }
+        System.out.println("Serie de Fibonacci entre " + n + " y " + m + ":");
+
+        int a = 0, b = 1;
+
+        while (a < n) {
+            int siguiente = a + b;
+            a = b;
+            b = siguiente;
+        }
+        if (a <= m) {
+            while (a <= m) {
+                System.out.print(a + " ");
+                int siguiente = a + b;
+                a = b;
+                b = siguiente;
+            }
+        } else {
+            System.out.println("No hay números de Fibonacci en el rango especificado.");
+        }
+        scanner.close();
+    }
+}
