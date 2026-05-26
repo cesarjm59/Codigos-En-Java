@@ -1,0 +1,44 @@
+import java.util.Scanner;
+class EstadisticasNumeros {
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
+
+        int numeroMayor = Integer.MIN_VALUE; 
+        int numeroMenor = Integer.MAX_VALUE; 
+        int sumaAcumulada = 0;
+        int cantidadNumeros = 0;
+        int numeroIngresado;
+
+        System.out.println("Ingrese números positivos (finalice con 0):");
+
+        while (true) {
+            numeroIngresado = teclado.nextInt();
+            if (numeroIngresado == 0) {
+                break; 
+            }
+            if (numeroIngresado < 0) {
+                System.out.println("Por favor, ingrese solo números positivos.");
+                continue; 
+            }
+            if (numeroIngresado > numeroMayor) numeroMayor = numeroIngresado;
+            if (numeroIngresado < numeroMenor) numeroMenor = numeroIngresado;
+
+            sumaAcumulada += numeroIngresado;
+            cantidadNumeros++;
+        }
+        if (cantidadNumeros > 0) {
+            double promedio = (double) sumaAcumulada / cantidadNumeros;
+            
+            String promedioTexto = String.format("%,.2f", promedio);
+            
+            System.out.println("\n--- Resultados ---");
+            System.out.println("Número menor: " + numeroMenor);
+            System.out.println("Número mayor: " + numeroMayor);
+            
+            System.out.println("Promedio: " + promedioTexto);
+        } else {
+            System.out.println("No se ingresaron números válidos.");
+        }
+        teclado.close();
+    }
+}
