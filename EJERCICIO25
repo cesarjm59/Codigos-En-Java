@@ -1,0 +1,36 @@
+import java.util.Scanner;
+class MultiplicadorOnceEspecial {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Introduzca el número N a multiplicar por 11: ");
+        String nStr = sc.next();
+        
+        int[] digitos = new int[nStr.length()];
+        for (int i = 0; i < nStr.length(); i++) {
+            digitos[i] = Character.getNumericValue(nStr.charAt(i));
+        }
+        StringBuilder resultado = new StringBuilder();
+        int acarreo = 0;
+        int m = digitos.length;
+
+        for (int i = m; i >= 0; i--) {
+            int sumaActual = 0;
+            if (i == m) {
+                sumaActual = digitos[m - 1];
+            } else if (i == 0) {
+                sumaActual = digitos[0] + acarreo;
+                acarreo = 0; 
+            } else {
+                sumaActual = digitos[i - 1] + digitos[i] + acarreo;
+            }
+            resultado.insert(0, sumaActual % 10);
+            acarreo = sumaActual / 10;
+        }
+        if (acarreo > 0) {
+            resultado.insert(0, acarreo);
+        }
+        System.out.println("Resultado según la regla: " + resultado.toString());
+        sc.close();
+    }
+}
