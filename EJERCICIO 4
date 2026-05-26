@@ -1,0 +1,24 @@
+import java.util.Scanner;
+class PROMEDIO {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.println("Ingrese el numero:    ");
+        String original = sc.next();
+        
+        double suma = 0;
+        for(int i=0; i < original.length(); i++) {
+        suma += Character.getNumericValue(original.charAt(i));   
+        }
+        
+        int promedio=(int) (suma/ original.length());
+        System.out.println("Promedio de digitos:  " + promedio);
+        
+        String rotado = original;
+        for(int i=0; i< promedio; i++) {
+            rotado = rotado.substring(1) + rotado.charAt(0);
+        }
+        System.out.println("Resultado tras rotar" + promedio + "veces:  " + rotado);
+        sc.close();
+    }
+}
