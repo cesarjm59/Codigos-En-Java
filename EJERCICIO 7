@@ -1,6 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
-public class AdivinarNumero {
+class AdivinarNumero {
     public static void main(String[] args) {
         final int MAXIMO = 100;
         Random random = new Random();
