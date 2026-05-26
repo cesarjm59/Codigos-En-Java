@@ -1,0 +1,31 @@
+import java.util.Scanner; 
+class Años { 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int intentos = 0;
+        int bisiestosEncontrados = 0;
+
+        System.out.println("El programa se detendra al hallar 3 bisiestos o al llegar a 10 intentos.");
+
+        while (intentos < 10 && bisiestosEncontrados < 3) {
+            System.out.print("Ingresa un año: ");
+
+            int año = sc.nextInt();
+            intentos++;
+
+            if ((ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0)) {
+                System.out.println("El año " + año + " es BISIESTO.");
+                bisiestosEncontrados++;
+            } else {
+                System.out.println("El año " + ano + " NO es bisiesto.");
+            }
+
+            System.out.println("Progreso: " + bisiestosEncontrados + "/3 bisiestos, " + intentos + "/10 intentos.");
+            System.out.println("---------------------------------------");
+        }
+
+        System.out.println("Programa finalizado.");
+        sc.close();
+    }
+}
