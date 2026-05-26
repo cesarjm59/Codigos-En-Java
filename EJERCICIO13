@@ -1,0 +1,23 @@
+import java.math.BigInteger;
+class SumaProductoPares {
+    public static void main(String[] args) {
+        
+        int inicio = 20;
+        int fin = 400;
+        
+        long suma = 0;
+        BigInteger producto = BigInteger.ONE;
+        
+        System.out.println("Calculando entre " + inicio + " y " + fin + "...");
+
+        for (int i = inicio; i <= fin; i++) {
+            if (i % 2 == 0) {
+                suma += i;
+                producto = producto.multiply(BigInteger.valueOf(i));
+            }
+        }
+        System.out.println("------------------------------------------------");
+        System.out.println("La suma de los pares es: " + suma);
+        System.out.println("El producto de los pares es: " + producto);
+    }
+}
