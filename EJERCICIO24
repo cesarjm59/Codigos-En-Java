@@ -1,0 +1,68 @@
+import java.util.Scanner;
+class EvaluacionPostulantes {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        final int TOTAL_POSTULANTES = 1000;
+        final int MINIMO_INGRESO = 120;
+
+        double sumaNotas = 0;
+        double sumaNotasCuadrado = 0;
+        int ingresantes = 0;
+        double notaMinIngresante = Double.MAX_VALUE;
+        double notaMaxIngresante = Double.MIN_VALUE;
+
+        System.out.println("--- Proceso de Admisión Ingeniería de Sistemas ---");
+
+        for (int i = 1; i <= TOTAL_POSTULANTES; i++) {
+            System.out.println("\nPostulante #" + i);
+            
+            System.out.print("Correctas Razonamiento (máx 40): ");
+            int rCorrectas = sc.nextInt();
+            int rIncorrectas = 40 - rCorrectas;
+            double notaR = (rCorrectas * 2) + (rIncorrectas * -1);
+
+            System.out.print("Correctas Ciencias (máx 30): ");
+            int cCorrectas = sc.nextInt();
+            int cIncorrectas = 30 - cCorrectas;
+            double notaC = (cCorrectas * 3) + (cIncorrectas * -1.5);
+
+            System.out.print("Correctas Letras (máx 30): ");
+            int lCorrectas = sc.nextInt();
+            int lIncorrectas = 30 - lCorrectas;
+            double notaL = (lCorrectas * 1) + (lIncorrectas * -0.5);
+
+            double notaFinal = notaR + notaC + notaL;
+            sumaNotas += notaFinal;
+            sumaNotasCuadrado += Math.pow(notaFinal, 2);
+
+            System.out.printf("Nota Final: %.2f | ", notaFinal);
+            if (notaFinal >= MINIMO_INGRESO) {
+                System.out.println("ESTATUS: INGRESO");
+                ingresantes++;
+
+                if (notaFinal < notaMinIngresante) notaMinIngresante = notaFinal;
+                if (notaFinal > notaMaxIngresante) notaMaxIngresante = notaFinal;
+            } else {
+                System.out.println("ESTATUS: NO INGRESO");
+            }
+        }
+        double media = sumaNotas / TOTAL_POSTULANTES;
+
+        double varianza = (sumaNotasCuadrado / TOTAL_POSTULANTES) - Math.pow(media, 2);
+
+        System.out.println("\n========================================");
+        System.out.println("REPORTES FINALES");
+        System.out.printf("Media aritmética de notas: %.2f%n", media);
+        System.out.printf("Varianza de las notas: %.2f%n", varianza);
+        
+        if (ingresantes > 0) {
+            System.out.println("Total ingresantes: " + ingresantes);
+            System.out.printf("Nota mínima de ingresantes: %.2f%n", notaMinIngresante);
+            System.out.printf("Nota máxima de ingresantes: %.2f%n", notaMaxIngresante);
+        } else {
+            System.out.println("No hubo ingresantes en este proceso.");
+        }
+        sc.close();
+    }
+}
